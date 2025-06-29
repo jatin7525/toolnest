@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.ai
+.DS_Store
+.vscode/
+*.log
+*.tmp
+coverage/
+*.swp
+*.swo
+*.bak
+*.orig 

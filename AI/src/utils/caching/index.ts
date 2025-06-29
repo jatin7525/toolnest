@@ -1,0 +1,1 @@
+export * as caching from './searchCache';

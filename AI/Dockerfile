@@ -1,21 +1,22 @@
-# Use official Node.js image
+# Use Node Alpine
 FROM node:20-alpine
 
+FROM ghcr.io/puppeteer/puppeteer:latest
+
 # Set working directory
-WORKDIR ./src/app
+WORKDIR /app
+
+# Copy package files from AI folder
+COPY AI/package*.json ./
 
 # Install dependencies
-COPY package*.json ./
-RUN npm ci
+RUN npm install
 
-# Copy source code
-COPY . .
+# Copy all source files
+COPY AI ./
 
-# Build if needed (skip if running TS via ts-node)
-RUN npm run build
+# Move into src
+WORKDIR /app/src
 
-# Expose the port your server listens on
-EXPOSE 5000
-
-# Start the server
-CMD [ "node", "dist/index.js" ]
+# Start server
+CMD ["npx", "ts-node", "index.ts", "--port", "3000", "--host", "0.0.0.0"]

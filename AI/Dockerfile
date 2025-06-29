@@ -10,4 +10,6 @@ RUN npm install
 COPY AI ./AI
 WORKDIR /src/app/AI/src
 
+ENV NODE_OPTIONS=--max-old-space-size=2048
+
 CMD ["npx", "ts-node", "index.ts"]

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.DS_Store
+.vscode/
+*.log
+*.tmp
+coverage/
+*.swp
+*.swo
+*.bak
+*.orig 

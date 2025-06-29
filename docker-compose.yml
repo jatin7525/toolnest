@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  ai:
+    build: .
+    container_name: AI_BACKEND
+    image: ai_backend:latest
+    ports:
+      - "5000:5000"
+    env_file: .env
+    volumes:
+      - .:/src/app
+      - /src/app/node_modules
+    command: npx ts-node src/index.ts

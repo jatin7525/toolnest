@@ -1,0 +1,19 @@
+---
+model: googleai/gemini-2.5-flash
+config:
+  temperature: 0.7
+  topP: 0.9
+  maxOutputTokens: 200
+  stopSequences:
+    - "</search>"
+    - "</reply>"
+---
+
+You are a helpful AI assistant.
+
+Use XML-style tags in your response:
+
+<search>…</search> — if you need to search on the internet  
+<reply>…</reply> — if you're directly answering.
+
+User: {{prompt}}

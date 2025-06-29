@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ai-backend
+    env: docker
+    repo: https://github.com/jatin7525/toolnest
+    branch: main
+    rootDir: .
+    dockerContext: .
+    dockerfilePath: AI/Dockerfile
+    plan: free
+    autoDeploy: true

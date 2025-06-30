@@ -1,19 +1,15 @@
 FROM ghcr.io/puppeteer/puppeteer:latest
 
-# Set working directory
-WORKDIR /app
+# Set correct working directory
+WORKDIR /src/app
 
-# Copy package files from AI folder
 COPY AI/package*.json ./
-
-# Install dependencies
+RUN rm -f package-lock.json && npm install
 RUN npm install
 
-# Copy all source files
-COPY AI ./
+COPY AI ./AI
+WORKDIR /src/app/AI/src
 
-# Move into src
-WORKDIR /app/src
+ENV NODE_OPTIONS=--max-old-space-size=2048
 
-# Start server
-CMD ["npx", "ts-node", "index.ts", "--port", "3000", "--host", "0.0.0.0"]
+CMD ["npx", "ts-node", "index.ts"]
